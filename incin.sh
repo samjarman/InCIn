@@ -10,11 +10,15 @@ while true; do
 	echo "int main(void) {" >> temp.c;
 		echo $code >> temp.c;
 	echo "return 0;}" >> temp.c;
+	
+	#compile
 	gcc temp.c -o temp;
+	
+	#run
 	./temp;
+	
+	#cleanup
 	rm temp.c;
 	rm ./temp;
 	echo
 done
-
-float a = 4.233234234; printf("Num = %0.2f", a);
