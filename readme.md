@@ -5,7 +5,7 @@ $`bash incin.sh`
 
 You could of course add it to your path and then call it like `incin` anywhere. 
 
-The program takes your input, puts it inside a simple c program, compiles and returns you the result. It doesn't remember the previous actions (yet!).
+The program takes your input, puts it inside a simple c program, compiles and returns you the result. It does this for all input, so previous variables declared are remembered. Keep in mind that previous printf statments or anything that produces output will also be re-ran. 
 
 Just a simple experiment, however, if you find it useful, let me know. 
 
