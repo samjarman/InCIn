@@ -1,6 +1,23 @@
 #!/bin/bash
 
 echo "Welcome to IncIn, an inline interpreter for c";
+
+#check for env var, generic cc, then specific compilers
+if [ "x$CC" = "x" ]; then
+	for i in cc gcc clang; do
+		if which "$i" >& /dev/null ; then
+			CC=`which $i`
+			break
+		fi
+	done
+fi
+
+#die meaningfully if no compiler
+if [ "x$CC" = "x" ]; then
+	echo "No c compiler found. Exiting."
+	exit 42
+fi
+
 CODE=""
 while true; do
 	read -p ">>> " temp
@@ -13,7 +30,7 @@ while true; do
 	echo "return 0;}" >> temp.c;
 	
 	#compile
-	gcc temp.c -o temp;
+	$CC temp.c -o temp;
 	
 	#run
 	./temp;
